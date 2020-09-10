@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PASGEN</title>
+    </head>
+    <header>
+        <h1>***PASSWORD GENERATOR***</h1>
+    </header>
+<style>
+    header {
+        float:center;
+        width:100%;
+        margin: 0 auto;
+    }
+    h1 {
+    text-align: center;
+    color: rgb(230, 223, 229);
+    }
+    h2 {
+        text-align: center;
+        color:chartreuse;
+    }
+    body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 20px;
+    background-size: cover;
+    
+    background-image: url("https://cdn5.vectorstock.com/i/1000x1000/48/49/abstract-background-dark-and-black-carbon-fiber-vector-11394849.jpg");
+    }
+
+    #main-layout {
+    padding-top: 130px; 
+    min-height: calc(100vh - 70px);
+    background-color: #f7f3f3;
+    background-size: cover;
+    background-image: url("https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/ascii-code-t.jpg");
+    margin: 0 auto;
+    float: center;
+    }
+    .container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    clear: both;
+    }
+    .layout {
+    float: center;
+    width: 90%;
+    max-width: 900px;
+    padding: 30px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 25px hsl(0, 93%, 49%);
+    }
+    #password {
+    text-align: center;
+    float: center;
+    width: 100%;
+    max-width: 900px;
+    min-height: 170px;
+    padding: 30px 0px 0px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 5px solid #dddddd;
+    border-style: inset;
+    border-radius: 10px;
+    background-color: #ffffff;
+    }
+    .button {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 50px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+    }
+    #generate {
+    background:green;
+    }
+    #copy {
+    float: right;
+    background: black;
+    }
+
+</style>    
+<body>
+    <section class='layout'>
+        <div id='main-layout' class='container'>
+            <h2>Generate Your Password! </h2>
+            <hr>
+            <textarea  readonly id='password' placeholder="Your Secure Password"></textarea>
+            <hr>
+            <button id='generate' class='button' onclick="generate()">Create Password</button>
+            <button id='copy' class='button' onclick='saved()'>Copy to Clipboard</button>
+
+        </div>
+    </section>   
+</body> 
+<script>
+    var lower = 'abcdefghijklmnopqrstuvwxyz';
+    var upper = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var special = '!@#$^&%*()+=-[]{}|:<>?,.';
+    var numbers = '1234567890';
+
+    var pwd = '';
+
+    var lowerSelection = false;
+    var upperSelection = false;
+    var specialSelection = false;
+    var numberSelection = false;
+
+function generate() {
+    var confirmLength = '';
+    while (isNaN(confirmLength) || confirmLength < 8 || confirmLength > 128) {
+        confirmLength = prompt("What length would you like the password to be !!");
+        if (confirmLength === null) {
+            break;
+        }
+    }
+    if (confirmLength) {
+        if (confirm("Would you like to use lowercase characters?") == true) {
+            lowerSelection = true
+        }
+        else{
+            lowerSelection = false
+        } 
+
+        if (confirm("Would you like to use uppercase characters?") == true) {
+            upperSelection = true
+        }
+        else{
+            upperSelection = false
+        }
+
+        if (confirm("Would you like to use special characters?") == true) {
+            specialSelection = true
+        }
+        else{
+            specialSelection =false
+        }
+
+        if (confirm("Would you like to use numerical characters?") == true) {
+            numberSelection = true
+        }
+        else{
+            numberSelection = false
+        }
+        if (lowerSelection === false && upperSelection === false && specialSelection === false && numberSelection === false) {
+            alert("!!!!!!At least one character type must be selected!!!!!!")
+        }
+    }
+    var characters = '';
+    characters += (lowerSelection ? lower : '');
+    characters += (upperSelection ? upper : '');
+    characters += (specialSelection ? special : '');
+    characters += (numberSelection ? numbers : '');
+
+    pwd = password(confirmLength, characters);
+
+    document.getElementById("password").innerHTML = pwd;
+
+}
+
+function password(l, characters) {
+    var pwd = '';
+    for (var i = 0; i < l; ++i) {
+        pwd += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return pwd;
+}
+function saved() {
+    document.getElementById("password").select();
+    document.execCommand("copy");
+    alert("The password has been copied to your clipboard!");
+}
+</script>   
+</html>
