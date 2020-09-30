@@ -2,9 +2,15 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>PASGEN</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
     <header>
-        <h1>***PASSWORD GENERATOR***</h1>
+        <nav class="navbar navbar-dark bg-secondary">
+            <a class="navbar-brand" href="#">PASSGEN</a>
+            <svg width="5em" height="3em" viewBox="0 0 16 16" class="bi bi-code-slash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0zm-.999-3.124a.5.5 0 0 1 .33.625l-4 13a.5.5 0 0 1-.955-.294l4-13a.5.5 0 0 1 .625-.33z"/>
+            </svg>
+          </nav>   
     </header>
 <style>
     header {
@@ -12,19 +18,10 @@
         width:100%;
         margin: 0 auto;
     }
-    h1 {
-    text-align: center;
-    color: rgb(230, 223, 229);
-    }
-    h2 {
-        text-align: center;
-        color:chartreuse;
-    }
     body {
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 20px;
-    background-size: cover;
-    
+    background-size: cover;    
     background-image: url("https://cdn5.vectorstock.com/i/1000x1000/48/49/abstract-background-dark-and-black-carbon-fiber-vector-11394849.jpg");
     }
 
@@ -34,7 +31,7 @@
     background-color: #f7f3f3;
     background-size: cover;
     background-image: url("https://www.ionos.com/digitalguide/fileadmin/DigitalGuide/Teaser/ascii-code-t.jpg");
-    margin: 0 auto;
+    margin: 0 auto;    
     float: center;
     }
     .container {
@@ -86,12 +83,22 @@
     float: right;
     background: black;
     }
+    .nav-item{
+        width: 100%;
+        color:hsl(258, 98%, 48%);
+       display: inline-block;
+    }
 
 </style>    
 <body>
+    
     <section class='layout'>
         <div id='main-layout' class='container'>
-            <h2>Generate Your Password! </h2>
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">GENERATE YOUR PASSWORD!!</a>
+                </li>
+            </ul>    
             <hr>
             <textarea  readonly id='password' placeholder="Your Secure Password"></textarea>
             <hr>
